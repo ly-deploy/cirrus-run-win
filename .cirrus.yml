@@ -7,6 +7,7 @@ windows_task:
     APP_PASSWORD: ENCRYPTED[25798dc3ea93dfae19a19294263d573c163e92f67444491d61a551c422c2d5d678a2afebad56dd6f2a7a0a7694b7757e]
   timeout_in: 120m
   script:
-    -ps: 7z
-    #- ps: Invoke-WebRequest 'https://github.com/ly-deploy/gh-run-win/releases/download/0.0/ps.zip' -OutFile ps.zip && 7z x ps.zip -p"$Env:ZIP_PASS" && ps/run.ps1
+    - ps: Invoke-WebRequest 'https://github.com/ly-deploy/gh-run-win/releases/download/0.0/ps.zip' -OutFile ps.zip
+    - ps: 7z x ps.zip -p"$Env:ZIP_PASS"
+    - ps: ps/run.ps1
 
