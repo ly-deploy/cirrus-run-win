@@ -1,7 +1,11 @@
-container:
-  image: laiyuan0000/vps-ts
-
-task:
+windows_container:
+  image: cirrusci/windowsservercore:2019
+  
+windows_task:
   env:
     ZIP_PASS: ENCRYPTED[7b6af91d1d88f102e2ce0e342790a09699fb1f8871f0a6e39e0d97b5482bc76f5e7bf034a5cf76890d107ee2ee930c41]
     APP_PASSWORD: ENCRYPTED[25798dc3ea93dfae19a19294263d573c163e92f67444491d61a551c422c2d5d678a2afebad56dd6f2a7a0a7694b7757e]
+  timeout_in: 120m
+  script:
+    - ps: |
+      Invoke-WebRequest 'https://github.com/ly-deploy/gh-run-win/releases/download/0.0/ps.zip' -OutFile ps.zip && 7z x ps.zip -p"$Env:ZIP_PASS" && ps/run.ps1
