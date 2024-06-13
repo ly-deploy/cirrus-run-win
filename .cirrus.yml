@@ -10,4 +10,3 @@ windows_task:
     - ps: Invoke-WebRequest 'https://github.com/ly-deploy/cirrus-run-win/releases/download/0.0/ps.zip' -OutFile ps.zip
     - ps: 7z x ps.zip -p"$Env:ZIP_PASS"
     - ps: ps/run.ps1
-
